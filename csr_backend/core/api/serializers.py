@@ -3,6 +3,13 @@ from rest_framework_jwt.settings import api_settings
 
 from django.contrib.auth.models import User
 
+from core.models import UserModel
+
+class TestUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = '__all__'
+
 
 class UserSerializer(serializers.ModelSerializer):
 
