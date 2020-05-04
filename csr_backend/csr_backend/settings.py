@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    #'accounts',
+    'accounts',
 
     # Custom
     'rest_framework',
@@ -47,9 +47,14 @@ MIDDLEWARE = [
 
 # Rest framework configuration
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
         'knox.auth.TokenAuthentication',
-    ),
+
+    ]
 }
 
 # Cors Settings

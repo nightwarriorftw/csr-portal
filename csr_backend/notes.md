@@ -1,2 +1,2 @@
 - After adding a foriegn key, checkout how we can modify viewsets i.e create get_queryset and perform_create.
-- 
+- registration api, make password write only
