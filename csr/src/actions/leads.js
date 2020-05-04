@@ -24,7 +24,7 @@ export const getLeads = () => dispatch => {
 
 // DELETE LEAD
 export const deleteLead = (id) => dispatch => {
-    axios.get(`http://localhost:8000/api/leads/${id}`)
+    axios.delete(`http://localhost:8000/api/leads/${id}`)
     .then(res=>{
         dispatch({
             type: DELETE_LEAD,
