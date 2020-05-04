@@ -26,10 +26,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'accounts',
 
     # Custom
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -45,24 +47,20 @@ MIDDLEWARE = [
 
 # Rest framework configuration
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+
+    ]
+}
+
+REST_KNOX = {
+    'USER_SERIALIZER': 'knox.serializers.UserSerializer'
 }
 
 # Cors Settings
 CORS_ORIGIN_WHITELIST=(
     'http://localhost:3000',
 )
-
-JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'core.api.utils.custom_jwt_handler'
-}
 
 ROOT_URLCONF = 'csr_backend.urls'
 
