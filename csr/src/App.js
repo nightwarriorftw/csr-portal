@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
 import './App.css';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import { positions, Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from "react-alert-template-basic";
+import Login from './components/accounts/Login';
+import Register from './components/accounts/Register';
 
 import NavBar from './components/layout/Headers';
 import Dashboard from './components/leads/Dashboard';
@@ -18,20 +21,26 @@ const alertOptions = {
 
 class App extends React.Component {
 
-  render(){
-    
+  render() {
+
     return (
       <div className="App">
         <Provider store={store}>
-        <AlertProvider template={AlertTemplate}
-          {...alertOptions}>
-          <Fragment>
-           <NavBar />
-           <Alerts />
-            <div className="container">
-             <Dashboard />
-            </div>
-          </Fragment>
+          <AlertProvider template={AlertTemplate}
+            {...alertOptions}>
+            <Router>
+              <Fragment>
+                <NavBar />
+                <Alerts />
+                <div className="container">
+                  <Switch>
+                    <Route exact path='/' component={Dashboard} />
+                    <Route exact path='/register' component={Register} />
+                    <Route exact path='/login' component={Login} />
+                  </Switch>
+                </div>
+              </Fragment>
+            </Router>
           </AlertProvider>
         </Provider>
       </div>
