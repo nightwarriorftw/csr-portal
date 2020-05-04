@@ -10,6 +10,8 @@
     "axios": "^0.19.2",
     "prop-types": "^15.7.2",
     "react": "next",
+    "react-alert": "^7.0.0",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "next",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
