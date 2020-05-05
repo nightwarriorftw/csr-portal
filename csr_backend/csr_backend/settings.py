@@ -50,12 +50,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'knox.auth.TokenAuthentication',
 
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
     ]
 }
 
-REST_KNOX = {
-    'USER_SERIALIZER': 'knox.serializers.UserSerializer'
-}
 
 # Cors Settings
 CORS_ORIGIN_WHITELIST=(

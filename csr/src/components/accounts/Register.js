@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
-export default class Register extends Component {
+
+export class Register extends Component {
     state = {
         username: '',
         email: '',
@@ -9,9 +12,18 @@ export default class Register extends Component {
         password2: ''
     }
 
-    onSubmit = (e) => {
+    static propTypes  = {
+        isAuthenticated: PropTypes.bool
+    }
+    handleSubmit = (e) => {
         e.preventDefault();
-        console.log('submitted');
+        const { username, email, password, password2 } = this.state;
+        console.log(username[0], email[0], password[0], password2[0]);
+        if (password[0]!==password2[0]) {
+            console.log('error');
+        } else {
+            this.props.register(username[0], email[0], password[0]);
+        }
     }
 
     handleChange = (e) => {
@@ -22,6 +34,7 @@ export default class Register extends Component {
 
     render() {
         const { username, email, password, password2 } = this.state;
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
@@ -47,3 +60,9 @@ export default class Register extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { register })(Register);
