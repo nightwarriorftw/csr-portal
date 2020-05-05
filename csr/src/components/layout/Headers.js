@@ -12,7 +12,6 @@ export class NavBar extends Component {
     }
 
     handleLogout = () => {
-        console.log('logout');
         this.props.logout();        
     }
 
@@ -25,7 +24,10 @@ export class NavBar extends Component {
                     <Link to='/' className="nav-link">Home<span className="sr-only">(current)</span></Link>
                 </li>
                 <li>
-                    <button className="btn btn-danger btn-sm text-light" onClick={this.handleLogout}>Logout</button>
+                    <span className="navbar-text mr-3">{ user ? `Welcome ${user.username}` : '' }</span>
+                </li>
+                <li>
+                    <button className="btn btn-danger btn-sm text-light my-1" onClick={this.handleLogout}>Logout</button>
                 </li>
             </ul>
         );

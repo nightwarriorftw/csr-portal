@@ -21,6 +21,10 @@ export class Alert extends Component {
             if(error.msg.message){
                 alert.error(`Message: ${error.msg.message.join()}`);
             }
+
+            if(error.msg.non_field_errors){
+                alert.error(`${error.msg.non_field_errors.join()}`);
+            }
         } else {
             alert.success('Details Added');
         }
