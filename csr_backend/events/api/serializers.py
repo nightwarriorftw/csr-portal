@@ -21,7 +21,8 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = EventModel
         fields = (
-            'user', 
+            'user',
+            'id',
             'title', 
             'slug', 
             'description',
@@ -32,9 +33,8 @@ class EventSerializer(serializers.ModelSerializer):
             'address',
 
         )
-    
-    
-        
+
     def create(self, validated_data):
-        user = UserSerializer(many=True).username
+        user = self.context['request'].user
+        print(validated_data.get('title'))
         return EventModel.objects.create(user=user, **validated_data)
