@@ -5,6 +5,8 @@ migrations/
 virtual/
 .vscode/
 *.pyc
+media_root/
+static_root/
 
 
 /.pnp
