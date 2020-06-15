@@ -8,4 +8,5 @@ from rest_framework import generics, permissions
 class EventViewSet(viewsets.ModelViewSet):
     queryset = EventModel.objects.all()
     serializer_class = EventSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
+    lookup_field = 'slug'

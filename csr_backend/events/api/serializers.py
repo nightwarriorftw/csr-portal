@@ -33,6 +33,8 @@ class EventSerializer(serializers.ModelSerializer):
             'address',
 
         )
+        lookup_field = 'slug'
+        extra_kwargs: { 'id': { 'lookup_field': 'slug' } }
 
     def create(self, validated_data):
         user = self.context['request'].user
