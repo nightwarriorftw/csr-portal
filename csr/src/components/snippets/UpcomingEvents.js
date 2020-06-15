@@ -1,25 +1,25 @@
-import React, { PureComponent } from 'react'
+import React, { useState, useEffect } from 'react'
 import ScrollAnimation from 'react-animate-on-scroll';
-
 import Card from '../layouts/Card';
+import axios from 'axios';
+import {
+    Link,
+} from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
-import { getEvents } from '../../actions/events';
+const UpcomingEvents = () => {
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
 
-export class UpcomingEvents extends PureComponent {
 
-    static propTypes = {
-        events: PropTypes.array.isRequired
-    }
+    useEffect(() => {
+        axios.get('http://localhost:8000/events/api/v1/')
+            .then(res => {
+                setUpcomingEvents(res.data);
+            })
+    }, []);
 
-    componentDidMount() {
-        this.props.getEvents();
-    }
-
-    render() {
-        return (
+    return (
+        <div>
             <div>
                 <div id="fh5co-services" className="fh5co-bg-section border-bottom">
                     <div className="container">
@@ -35,27 +35,25 @@ export class UpcomingEvents extends PureComponent {
                         <ScrollAnimation animateIn="fadeIn">
                             <div className="row">
                                 {/* Row1 */}
-                                {this.props.events.map(event => (
-                                    <a href={`events/${event.slug}`}>
-                                        <Card
-                                            key={event.id}
-                                            name={event.title}
-                                            image={event.image}
-                                            company={event.company}
-                                        />
-                                    </a>
+
+                                {upcomingEvents.map(event => (
+                                            <Link to={`/events/${event.slug}`} key={event.slug}>
+                                                <Card
+                                                    key={event.id}
+                                                    name={event.title}
+                                                    image={event.image}
+                                                    company={event.company}
+                                                />
+                                            </Link>
+                                                     
                                 ))}
                             </div>
                         </ScrollAnimation>
                     </div>
+                    </div>
                 </div>
             </div>
-        )
-    }
+    );
 }
 
-const mapStateToProps = state => ({
-    events: state.events.events,
-});
-
-export default connect(mapStateToProps, { getEvents })(UpcomingEvents);
+export default UpcomingEvents;

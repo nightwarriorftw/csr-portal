@@ -1,9 +1,5 @@
 import React, { PureComponent } from 'react'
 
-const style = {
-    color: "#A020F0",
-    cursor: "pointer",
-}
 
 export default class Footer extends PureComponent {
     render() {
@@ -16,16 +12,16 @@ export default class Footer extends PureComponent {
                             <p>Help to Grow India</p>
                             <div className="social-buttons">
                                 <ul>
-                                    <li className="item"><a href="https://www.facebook.com/indiancsr/" target="_blank" ><i className="fa fa-facebook-f"></i></a></li>
-                                    <li className="item"><a href="https://twitter.com/INDIACSR" target="_blank" ><i className="fa fa-twitter"></i></a></li>
+                                    <li className="item"><a href="https://www.facebook.com/indiancsr/" ><i className="fa fa-facebook-f"></i></a></li>
+                                    <li className="item"><a href="https://twitter.com/INDIACSR" ><i className="fa fa-twitter"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div className="links">
                             <h3>USEFUL LINKS </h3>
                             <ul>
-                                <li><a href="https://csrrajasthangov.in/" target="_blank">CSR Rajasthan</a></li>
-                                <li><a href="https://csr.odisha.gov.in/" target="_blank">CSR Odisha</a></li>
+                                <li><a href="https://csrrajasthangov.in/" >CSR Rajasthan</a></li>
+                                <li><a href="https://csr.odisha.gov.in/" >CSR Odisha</a></li>
                             </ul>
                         </div>
                     </div>

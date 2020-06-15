@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import ScrollAnimation from 'react-animate-on-scroll';
 
-import Card from '../layouts/SkillSetCard';
-import ImageCard from '../layouts/ImageCard';
+// import Card from '../layouts/SkillSetCard';
+// import ImageCard from '../layouts/ImageCard';
 
 export default class SkillSet extends PureComponent {
 

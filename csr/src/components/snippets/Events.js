@@ -1,0 +1,57 @@
+import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { getEvents } from '../../actions/types';
+
+class Events extends PureComponent {
+
+    static propTypes = {
+        events: PropTypes.array.isRequired
+    }
+
+    componentDidMount(){
+        this.props.getEvents();
+        console.log(this.props.events);
+    }
+
+    render() {
+        return (
+            <div>
+                <div id="fh5co-services" className="fh5co-bg-section border-bottom">
+                    <div className="container">
+                        <div className="row row-pb-md">
+                            <div className="col-md-8 col-md-offset-2 text-left">
+                                <div className="fh5co-heading">
+                                    <ScrollAnimation animateIn="fadeIn">
+                                        <h2>Upcoming Events</h2>
+                                    </ScrollAnimation>
+                                </div>
+                            </div>
+                        </div>
+                        <ScrollAnimation animateIn="fadeIn">
+                            <div className="row">
+                                {/* Row1 */}
+                                {this.props.events.map(event => (
+                                    <a href={`events/${event.slug}`}>
+                                        <Card
+                                            key={event.id}
+                                            name={event.title}
+                                            image={event.image}
+                                            company={event.company}
+                                        />
+                                    </a>
+                                ))}
+                            </div>
+                        </ScrollAnimation>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = {
+    events: state.events.events,
+}
+
+export default connect(mapStateToProps, { getEvents })(Events);

@@ -12,11 +12,9 @@ export default class Card extends PureComponent {
             backgroundImage: `url("${this.props.image}")`,
             backgroundSize: "cover",
         };
-        console.log(header_image.backgroundImage);
         return (
             <div>
 
-                    <a href={this.props.link}>
                         <div className="col-md-4 col-sm-6 ">
                             <div className="feature-center">
                                 <div style={header_image}>
@@ -28,8 +26,6 @@ export default class Card extends PureComponent {
                                 </div>
                             </div>
                         </div>
-                    </a>
-
             </div>
         )
     }

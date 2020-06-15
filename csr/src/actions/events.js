@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { GET_EVENTS } from './types';
 
+
 // GET EVENTS
 export const getEvents = () => dispatch => {
     

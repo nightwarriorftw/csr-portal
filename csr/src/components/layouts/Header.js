@@ -28,7 +28,7 @@ export default class Header extends PureComponent {
               <div className="col-xs-10 text-right menu-1">
                 <ul>
                   <li>
-                    <a href='#page'>Home</a>
+                    <a href='/'>Home</a>
                   </li>
                   <li>
                     <a href="#fh5co-services">Upcoming Events</a>
