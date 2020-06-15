@@ -1,10 +1,6 @@
 import { combineReducers } from 'redux';
-import leads from './leads';
-import errors from './errors';
-import auth from './auth';
+import events from './events';
 
 export default combineReducers({
-    leads,
-    errors,
-    auth,
+    events
 });
