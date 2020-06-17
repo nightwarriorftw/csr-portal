@@ -10,7 +10,7 @@ export default class Header extends PureComponent {
 
   render() {
     return (
-      <div>
+      <div id="page">
         <nav className="fh5co-nav" role="navigation">
           <div className="container">
             <div className="row">

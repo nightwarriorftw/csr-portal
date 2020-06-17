@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import './App.css';
 import EventDetails from './components/layouts/EventDetails';
-
+import Events from './components/snippets/Events';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <Provider store={store} >
         <BrowserRouter>
           <Route exact path='/' component={Home} />
+          <Route exact path='/events' component={Events} />
           <Route exact path='/events/:id' component={EventDetails}/>
         </BrowserRouter>
       </Provider>

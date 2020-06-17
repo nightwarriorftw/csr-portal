@@ -31,6 +31,7 @@ class EventSerializer(serializers.ModelSerializer):
             'hostName',
             'category',
             'address',
+            'dateOfEvent',
 
         )
         lookup_field = 'slug'

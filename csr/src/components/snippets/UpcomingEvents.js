@@ -14,7 +14,7 @@ const UpcomingEvents = () => {
     useEffect(() => {
         axios.get('http://localhost:8000/events/api/v1/')
             .then(res => {
-                setUpcomingEvents(res.data);
+                setUpcomingEvents(res.data.slice(0, 3));
             })
     }, []);
 
@@ -43,6 +43,7 @@ const UpcomingEvents = () => {
                                                     name={event.title}
                                                     image={event.image}
                                                     company={event.company}
+                                                    date={event.dateOfEvent}
                                                 />
                                             </Link>
                                                      
@@ -50,6 +51,8 @@ const UpcomingEvents = () => {
                             </div>
                         </ScrollAnimation>
                     </div>
+                    <hr/>
+                    <span id="showEvents"><Link to='/events'>Show more events</Link></span>
                     </div>
                 </div>
             </div>
