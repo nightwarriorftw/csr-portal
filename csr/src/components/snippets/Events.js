@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-import { getEvents } from '../../actions/types';
+import { getEvents } from '../../actions/events';
+import ScrollAnimation from 'react-animate-on-scroll';
+import Card from '../layouts/Card';
 
 class Events extends PureComponent {
 
@@ -23,7 +25,7 @@ class Events extends PureComponent {
                             <div className="col-md-8 col-md-offset-2 text-left">
                                 <div className="fh5co-heading">
                                     <ScrollAnimation animateIn="fadeIn">
-                                        <h2>Upcoming Events</h2>
+                                        <h2>Events</h2>
                                     </ScrollAnimation>
                                 </div>
                             </div>
@@ -50,8 +52,8 @@ class Events extends PureComponent {
     }
 }
 
-const mapStateToProps = {
-    events: state.events.events,
-}
+const mapStateToProps = state => ({
+    events: state.events.events
+})
 
 export default connect(mapStateToProps, { getEvents })(Events);

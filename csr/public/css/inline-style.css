@@ -33,3 +33,18 @@ a {
 button:hover, a:hover {
   opacity: 0.7;
 }
+
+/* events */
+#events {
+  background-color: #f0f5f9;
+}
+
+#showEvents {
+  display: flex;
+  justify-content: center;
+  color:  #f73859; 
+}
+
+#showEvents a{
+  color:  #f73859;
+}

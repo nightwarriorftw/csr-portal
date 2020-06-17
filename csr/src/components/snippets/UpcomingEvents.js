@@ -50,6 +50,8 @@ const UpcomingEvents = () => {
                             </div>
                         </ScrollAnimation>
                     </div>
+                    <hr/>
+                    <span id="showEvents"><Link to='/events'>Show more events</Link></span>
                     </div>
                 </div>
             </div>
