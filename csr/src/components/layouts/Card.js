@@ -21,8 +21,9 @@ export default class Card extends PureComponent {
 
                                 </div>
                                 <div>
-                                    <h3>{this.props.name}</h3>
+                                    <h2>{this.props.name}</h2>
                                     <p>{this.props.company}</p>
+                                    <p style={{fontSize: '12px'}}>{this.props.date}</p>
                                 </div>
                             </div>
                         </div>

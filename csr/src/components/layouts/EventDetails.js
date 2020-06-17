@@ -4,16 +4,17 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Axios from 'axios';
 
+
 function EventDetails() {
     const { id } = useParams();
-    const [eventDetails, setEventDetails] = useState([])
+    const [eventDetails, setEventDetails] = useState([{}])
 
     useEffect(() => {
         Axios.get(`http://localhost:8000/events/api/v1/${id}`)
             .then(res => {
                 setEventDetails(res.data);
             })
-    }, [id])
+    }, [setEventDetails])
 
     return (
         <div>
@@ -33,14 +34,14 @@ function EventDetails() {
                 </Link>
                 <p><span style={{ color: 'black' }}>HostName: </span>{eventDetails.hostName}</p>
                 <div><span style={{ color: 'black' }}>Address: </span>{eventDetails.address}</div>
-                <p><button>Donate More</button></p>
+                <div><span style={{ color: 'black' }}>Date: </span>{eventDetails.dateOfEvent}</div>                <p><button>Donate More</button></p>
+            </div>
+            <div className="container">
+                <strong>Descrpition:</strong>
+                    {eventDetails.description}
             </div>
         </div>
     )
-}
-
-EventDetails.propTypes = {
-    eventDetails: PropTypes.array.isRequired
 }
 
 export default EventDetails

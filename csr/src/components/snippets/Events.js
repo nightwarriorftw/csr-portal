@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { getEvents } from '../../actions/events';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Card from '../layouts/Card';
+import { Link } from 'react-router-dom';
 
 class Events extends PureComponent {
 
@@ -34,14 +35,15 @@ class Events extends PureComponent {
                             <div className="row">
                                 {/* Row1 */}
                                 {this.props.events.map(event => (
-                                    <a href={`events/${event.slug}`}>
+                                    <Link to={`events/${event.slug}`} key={event.slug}>
                                         <Card
                                             key={event.id}
                                             name={event.title}
                                             image={event.image}
                                             company={event.company}
+                                            date={event.dateOfEvent}
                                         />
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         </ScrollAnimation>
