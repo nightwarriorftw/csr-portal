@@ -48,3 +48,23 @@ button:hover, a:hover {
 #showEvents a{
   color:  #f73859;
 }
+
+/* Host event */
+.input {
+  background: rgba(241, 241, 241, .7);
+  width: 100%;
+  padding: 14px;
+  border-radius: 4px;
+  border: 0;
+  color: #3E3E3E;
+}
+
+.submit-btn {
+  background-color: rgba(36, 41, 44, .9);
+  border: none;
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  border-radius: 4px;
+  color: white;
+}

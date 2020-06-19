@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Axios from 'axios';
 
 
@@ -14,7 +13,7 @@ function EventDetails() {
             .then(res => {
                 setEventDetails(res.data);
             })
-    }, [setEventDetails])
+    }, [setEventDetails, id])
 
     return (
         <div>
