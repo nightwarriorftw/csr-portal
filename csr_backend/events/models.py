@@ -38,7 +38,7 @@ def image_upload(instance, filename):
 
 
 class EventModel(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='events', on_delete=models.CASCADE)
     title = models.CharField(max_length=70)
     slug = models.SlugField(max_length=50, blank=True, null=True)
     category = models.CharField(

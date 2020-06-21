@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "react-alert": "^7.0.1",
+    "react-alert-template-basic": "^1.0.0",
     "react-router-dom": "^5.2.0"
   }
 }

@@ -6,7 +6,7 @@ import UpcomingEvents from '../snippets/UpcomingEvents';
 import Footer from '../layouts/Footer';
 import Categories from '../snippets/Categories';
 import { Switch, Route } from 'react-router-dom';
-import EventDetails from '../layouts/EventDetails';
+import Alerts from '../snippets/Alert';
 
 export default class Home extends Component {
     render() {
@@ -15,12 +15,12 @@ export default class Home extends Component {
                     <Switch>
                     <Fragment>
                         <Header />
+                        <Alerts />
                         <Front />
                         <UpcomingEvents />
                         <Categories />
                         <Footer />
                     </Fragment>
-                    <Route exact path='/events/:id' component={EventDetails} />
                     </Switch>
 
             </div>

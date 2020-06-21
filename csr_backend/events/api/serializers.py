@@ -38,6 +38,5 @@ class EventSerializer(serializers.ModelSerializer):
         extra_kwargs: { 'id': { 'lookup_field': 'slug' } }
 
     def create(self, validated_data):
-        user = self.context['request'].user
         print(validated_data.get('title'))
-        return EventModel.objects.create(user=user, **validated_data)
+        return EventModel.objects.create(**validated_data)
