@@ -1,18 +1,23 @@
-import { GET_EVENTS } from '../actions/types';
+import { GET_EVENTS, ADD_EVENT } from "../actions/types";
 
 const initialState = {
-    events: []
-}
+  events: [],
+};
 
-export default function(state=initialState, action){
-    switch(action.type){
-        case GET_EVENTS:
-            return {
-                ...state,
-                events: action.payload,
-            }
-        
-        default:
-            return state
-    }
+export default function (state = initialState, action) {
+  switch (action.type) {
+    case GET_EVENTS:
+      return {
+        ...state,
+        events: action.payload,
+      };
+    case ADD_EVENT:
+      return {
+        ...state,
+        events: [...state.events, action.payload],
+      };
+
+    default:
+      return state;
+  }
 }
