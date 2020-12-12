@@ -31,7 +31,7 @@ class EventSerializer(serializers.ModelSerializer):
             'hostName',
             'category',
             'address',
-            'dateOfEvent',
+            'date_of_event',
 
         )
         lookup_field = 'slug'
@@ -39,5 +39,4 @@ class EventSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user = self.context['request'].user
-        print(validated_data.get('title'))
         return EventModel.objects.create(user=user, **validated_data)

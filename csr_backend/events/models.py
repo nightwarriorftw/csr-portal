@@ -47,7 +47,7 @@ class EventModel(models.Model):
     image = models.ImageField(upload_to=image_upload, blank=True, null=True)
     company = models.CharField(max_length=100)
     hostName = models.CharField(max_length=100)
-    dateOfEvent = models.DateField()
+    date_of_event = models.DateField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     # location

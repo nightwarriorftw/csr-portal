@@ -1,4 +1,4 @@
-import string
+import string, random
 from django.utils.text import slugify
 
 # random string generator

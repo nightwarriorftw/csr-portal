@@ -6,7 +6,10 @@ from rest_framework import viewsets
 from rest_framework import generics, permissions
 
 class EventViewSet(viewsets.ModelViewSet):
-    queryset = EventModel.objects.all()
+   
     serializer_class = EventSerializer
     permission_classes = (permissions.AllowAny,)
     lookup_field = 'slug'
+
+    def get_queryset(self):
+        return EventModel.objects.all().order_by('-date_of_event')
