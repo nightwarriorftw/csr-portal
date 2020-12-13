@@ -4,14 +4,27 @@ import store from "./store";
 import "./App.css";
 import Routes from "./Routes";
 
+import { Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+import Alerts from "./components/layouts/Alerts";
+
+const AlertOptions = {
+  timeout: 3000,
+  position: "top center",
+};
+
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Routes />
+        <AlertProvider template={AlertTemplate} {...AlertOptions}>
+          <Alerts />
+          <Routes />
+        </AlertProvider>
       </Provider>
     </div>
   );
+  
 }
 
 export default App;

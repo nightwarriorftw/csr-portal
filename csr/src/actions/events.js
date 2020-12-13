@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GET_EVENTS } from "./types";
+import { GET_ERRORS, GET_EVENTS } from "./types";
 
 // GET EVENTS
 export const getEvents = () => (dispatch) => {
@@ -12,5 +12,20 @@ export const getEvents = () => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      if (err.response) {
+        const errors = {
+          msg: err.response.data,
+          status: err.response.status,
+        };
+
+        dispatch({
+          type: GET_ERRORS,
+          payload: errors,
+        });
+      } else {
+        console.log(err);
+      }
+      
+    });
 };
