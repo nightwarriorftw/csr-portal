@@ -6,6 +6,7 @@ import Home from "./components/main/Home";
 import CreateEvent from "./components/forms/HostEvent";
 import Register from './components/accounts/Register';
 import Login from './components/accounts/Login';
+import PrivateRoute from './components/common/PrivateRoute';
 
 const Routes = () => {
   return (
@@ -15,7 +16,7 @@ const Routes = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/events" component={Events} />
           <Route exact path="/events/:id" component={EventDetails} />
-          <Route exact path="/host" component={CreateEvent} />
+          <PrivateRoute exact path="/host" component={CreateEvent} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
         </Switch>

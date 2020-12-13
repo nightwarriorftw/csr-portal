@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const imageStyle = {
   marginLeft: "100px",
@@ -33,6 +33,12 @@ export default class Header extends PureComponent {
                   </li>
                   <li>
                     <a href="#fh5co-project">Categories</a>
+                  </li>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                  <li>
+                    <Link to="/register">Register</Link>
                   </li>
                 </ul>
               </div>
