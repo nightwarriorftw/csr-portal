@@ -1,23 +1,28 @@
 import React, { PureComponent } from "react";
 import { withAlert } from "react-alert";
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class Alerts extends PureComponent {
-    static propTypes = {
-        error: PropTypes.object.isRequired
-    }
-
+  static propTypes = {
+    error: PropTypes.object.isRequired,
+  };
 
   componentDidUpdate(prevProps) {
-      const { error, alert } = this.prevProps;
+    const { error, alert, message } = this.props;
 
+    if (error !== prevProps.error) {
+      alert.error("There is an error");
 
-      if(error !== prevProps.error){
-          alert.error("There is an error");
+      // error handling for different cases
 
-          // error handling for different cases
-      }
+    }
+    // messages
+
+    if(message !== prevProps.message){
+        if(message.getEvents) alert.success(message.getEvents);
+    }
+    
   }
 
   render() {
@@ -25,10 +30,9 @@ class Alerts extends PureComponent {
   }
 }
 
-
 const mapStateToProps = (state) => ({
-    error: state.errors
+  error: state.errors,
+  message: state.messages,
 });
 
 export default connect(mapStateToProps)(withAlert()(Alerts));
-

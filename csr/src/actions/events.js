@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createMessage } from "./messages";
 
 import { GET_ERRORS, GET_EVENTS } from "./types";
 
@@ -7,6 +8,7 @@ export const getEvents = () => (dispatch) => {
   axios
     .get("http://localhost:8000/events/api/v1/")
     .then((res) => {
+      dispatch(createMessage({ getEvents: "Events" }));
       dispatch({
         type: GET_EVENTS,
         payload: res.data,
@@ -26,6 +28,5 @@ export const getEvents = () => (dispatch) => {
       } else {
         console.log(err);
       }
-      
     });
 };

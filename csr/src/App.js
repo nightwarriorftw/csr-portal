@@ -1,12 +1,14 @@
 import React from "react";
 import { Provider } from "react-redux";
+
 import store from "./store";
-import "./App.css";
 import Routes from "./Routes";
 
 import { Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import Alerts from "./components/layouts/Alerts";
+
+import "./App.css";
 
 const AlertOptions = {
   timeout: 3000,
