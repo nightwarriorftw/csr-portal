@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 // whatever component that is passed we need to render it
-const PrivateRoute = ({ component: Component, auth, ...rest }) => (
+const PrivateRoute = ({ component: Component, auth: auth, ...rest }) => (
   <Route
     {...rest}
-    render={(props) => {
+    render={props => {
       if (auth.isLoading) {
-        return <h2> Loading... </h2>;
+        return <h2>Loading...</h2>;
       } else if (!auth.isAuthenticated) {
         return <Redirect to="/login" />;
       } else {

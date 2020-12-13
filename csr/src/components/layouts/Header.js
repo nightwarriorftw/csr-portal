@@ -1,12 +1,44 @@
 import React, { PureComponent } from "react";
-import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import {logout} from '../../actions/auth';
+import auth from "../../reducers/auth";
 
 const imageStyle = {
   marginLeft: "100px",
 };
 
-export default class Header extends PureComponent {
+class Header extends PureComponent {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
+  };
+
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const guestLinks = (
+      <ul>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/register">Register</Link>
+        </li>
+      </ul>
+    );
+
+    const authLinks = (
+      <ul>
+        <li>
+          <span className="nav-link test-light">Welcome {user ? user.username : ''}</span>
+        </li>
+        <li className="nav-item">
+          <button style={{width: "75px"}} className="nav-link test-light btn-sm" onClick={this.props.logout}>Logout</button>
+        </li>
+      </ul>
+    );
     return (
       <div id="page">
         <nav className="fh5co-nav" role="navigation">
@@ -34,12 +66,11 @@ export default class Header extends PureComponent {
                   <li>
                     <a href="#fh5co-project">Categories</a>
                   </li>
-                  <li>
-                    <Link to="/login">Login</Link>
-                  </li>
-                  <li>
-                    <Link to="/register">Register</Link>
-                  </li>
+                  {isAuthenticated ? (
+                    authLinks
+                  ) : (
+                    guestLinks
+                  )}
                 </ul>
               </div>
             </div>
@@ -49,3 +80,9 @@ export default class Header extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Header);

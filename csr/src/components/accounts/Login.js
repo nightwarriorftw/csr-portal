@@ -1,5 +1,8 @@
 import React, { PureComponent } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actions/auth";
 
 const styles = {
   facebookBtn: {
@@ -10,15 +13,21 @@ const styles = {
   },
 };
 
-export default class Login extends PureComponent {
+class Login extends PureComponent {
   state = {
     username: "",
     password: "",
   };
 
+  static propTypes = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+  };
+
   handleOnSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password, password2 } = this.state;
+    const { username, password } = this.state;
+    this.props.login(username, password);
     console.log(this.state);
   };
 
@@ -30,6 +39,10 @@ export default class Login extends PureComponent {
   };
 
   render() {
+    if (this.props.isAuthenticated) {
+      return <Redirect to="/" />;
+    }
+
     const { username, password } = this.state;
 
     return (
@@ -68,7 +81,10 @@ export default class Login extends PureComponent {
 
                 <button type="submit">Login</button>
 
-                 <p> Don't have an account ? <Link to='/register'>Register</Link></p>
+                <p>
+                  {" "}
+                  Don't have an account ? <Link to="/register">Register</Link>
+                </p>
               </form>
             </div>
           </div>
@@ -77,3 +93,9 @@ export default class Login extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);
