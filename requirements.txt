@@ -5,7 +5,7 @@ Django==3.0.7
 django-cors-headers==3.4.0
 django-rest-knox==4.1.0
 django-restframework==0.0.1
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 Pillow==7.1.2
 pkg-resources==0.0.0
 pycparser==2.20
